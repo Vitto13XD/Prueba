@@ -13,6 +13,59 @@ Eliminar producto
 Salir
 """
 
+def validarCodigo(codigo):
+     codigo="Diego"
+     contador_mayusculas=0
+     for l in codigo:
+          if l.isupper():
+               contador_mayusculas+=1
+          if l.isnumeric():
+               contador_numeros+=1
+     if contador_mayusculas(2):
+          print("")
+     if contador_numeros():
+          print()
+     
+     
+     
+
+
+
+def solicitarProducto():
+    nombre=input("Ingrese el nombre del producto: ")
+    try:
+        stock=int(input("Ingrese el stock del producto: "))
+        precio=int(input("Ingrese el precio del producto: "))
+            
+        if stock<0 or precio <0:
+            raise ValueError
+                
+        else:
+            producto=[nombre,precio,stock]
+            return producto
+
+    except ValueError:
+        print("Debe ingresar valores enteros positivos")
+    
+def guardarProducto(nombre,precio,stock):
+    if nombre not in nombresProductos:
+        nombresProductos.append(nombre)
+        preciosProductos.append(precio)
+        stocksProductos.append(stock)
+        print("Se guardado correctamente el producto")
+
+def buscarProducto(nombre):
+    if nombre in nombresProductos:
+        indice= nombresProductos.index(nombre)
+        nombre=nombresProductos[indice]
+        precio=preciosProductos[indice]
+        stock=stocksProductos[indice]
+        print("-"*60)
+        print(f"Nombre: {nombre} \t Precio: ${precio} \t Stock: {stock} unidades")
+        print("-"*60)
+        #return [nombre,precio,stock]
+            
+
 while opcion!="6":
     print("1.- Agregar producto")
     print("2.- Buscar producto")
@@ -23,44 +76,10 @@ while opcion!="6":
 
     opcion=input("Ingrese la opción que desea(1-6): ")
 
-    def solicitarProducto():
-        nombre=input("Ingrese el nombre del producto: ")
-        try:
-            stock=int(input("Ingrese el stock del producto: "))
-            precio=int(input("Ingrese el precio del producto: "))
-            
-            if stock<0 or precio <0:
-                raise ValueError
-                
-            else:
-                producto=[nombre,precio,stock]
-                return producto
-
-        except ValueError:
-            print("Debe ingresar valores enteros positivos")
-    
-    def guardarProducto(nombre,precio,stock):
-        if nombre not in nombresProductos:
-            nombresProductos.append(nombre)
-            preciosProductos.append(precio)
-            stocksProductos.append(stock)
-            print("Se guardado correctamente el producto")
-
-    def buscarProducto(nombre):
-        if nombre in nombresProductos:
-            indice= nombresProductos.index(nombre)
-            nombre=nombresProductos[indice]
-            precio=preciosProductos[indice]
-            stock=stocksProductos[indice]
-            print("-"*60)
-            print(f"Nombre: {nombre} \t Precio: ${precio} \t Stock: {stock} unidades")
-            print("-"*60)
-            #return [nombre,precio,stock]
-            
-        else:
+else:
             print("No existe un producto con ese nombre")
     
-    match opcion:
+match opcion:
 
         case "1":
             nuevoProducto=solicitarProducto()
